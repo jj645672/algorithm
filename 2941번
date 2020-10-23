@@ -1,0 +1,29 @@
+# no.2941
+# level - Silver 5
+
+
+string = []
+for i in input():
+    string.append(i)
+
+count = 0
+index = len(string)-1
+
+while (index != -1):
+    if string[index] == 'j' and (string[index-1] == 'l' or string[index-1] == 'n'):
+        count += 1
+        index -= 2
+    elif string[index] == '-' and (string[index-1] == 'c' or string[index-1] == 'd'):
+        count += 1
+        index -= 2
+    elif string[index] == '=' and string[index-1] == 'z' and string[index-2] == 'd':
+        count += 1
+        index -= 3
+    elif string[index] == '=' and (string[index-1] == 'c' or string[index-1] == 's' or string[index-1] == 'z'):
+        count += 1
+        index -= 2
+    else:
+        count += 1
+        index -= 1
+
+print(count)
