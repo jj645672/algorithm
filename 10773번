@@ -1,0 +1,21 @@
+# no.10773qjs
+# level - Silver 4
+
+k = int(input())
+l = []
+
+for i in range(k):
+    n = int(input())
+    l.append(n)
+    if n == 0:
+        l.pop()
+        l.pop()
+
+
+if len(l) == 0:
+    print(0)
+else:
+    s = 0
+    for i in l:
+        s += i
+    print(s)
