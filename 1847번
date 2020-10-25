@@ -1,0 +1,31 @@
+# no.1874
+# lever - Silver 3
+
+
+num = int(input())
+ans = [0]
+for i in range(num):
+    ans.append(int(input()))
+
+stack = []
+res = []
+index = 1
+
+for i in range(1, num+1):
+    stack.append(i)
+    res.append('+')
+    if i != ans[index]:
+        continue
+    else:
+        while(len(stack) != 0 and ans[index] == stack[-1]):
+            stack.pop()
+            res.append('-')
+            index += 1
+            if index == num+1:
+                break
+
+if len(stack) == 0:
+    for i in res:
+        print(i)
+else:
+    print('NO')
