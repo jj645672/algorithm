@@ -1,0 +1,26 @@
+# no.4949
+# level - Silver 4
+
+while True:
+    line = input()
+    stack = []
+    flag = True
+    if line == '.':
+        break
+    for i in line:
+        if i == '[' or i == '(':
+            stack.append(i)
+        elif i == ')':
+            if len(stack) != 0 and stack[-1] == '(':
+                stack.pop()
+            else:
+                flag = False
+        elif i == ']':
+            if len(stack) != 0 and stack[-1] == '[':
+                stack.pop()
+            else:
+                flag = False
+    if flag == False or len(stack) != 0:
+        print('no')
+    elif flag == True and len(stack) == 0:
+        print('yes')
