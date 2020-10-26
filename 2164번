@@ -1,0 +1,20 @@
+# no.2164
+# lever - Silver 4
+
+front = 0
+rear = int(input()) -1
+
+queue = [i for i in range(1, rear+2)]
+
+
+while (front != rear):
+    queue[front] = '*'
+    front += 1
+
+    queue.append(queue[front])
+    rear += 1
+
+    queue[front] = '*'
+    front += 1
+
+print(queue[front])
