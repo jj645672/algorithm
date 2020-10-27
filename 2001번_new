@@ -1,0 +1,17 @@
+# numpy를 쓰지 않고 해결!
+
+testcase = int(input())
+for i in range(testcase):
+    n, m = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(n)]
+
+    dead_fly = 0
+    for j in range(n-m+1):
+        for h in range(n-m+1):
+            tmp = 0
+            for x in range(m):
+                for y in range(m):
+                    tmp += arr[j+x][h+y]
+            if tmp > dead_fly:
+                dead_fly = tmp
+    print('#{0} {1}'.format(i+1, dead_fly))
