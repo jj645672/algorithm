@@ -1,0 +1,33 @@
+# no.1961
+# difficulty 2
+
+testcase = int(input())
+for i in range(testcase):
+    num = int(input())
+    arr = [input().split() for _ in range(num)]
+
+    arr_90 = [[] for _ in range(num)]
+    for j in range(num):
+        for k in range(num-1, -1, -1):
+            arr_90[j].append(arr[k][j])
+
+    arr_180 = [[] for _ in range(num)]
+    for j in range(num):
+        for k in range(num - 1, -1, -1):
+            arr_180[j].append(arr_90[k][j])
+
+    arr_270 = [[] for _ in range(num)]
+    for j in range(num):
+        for k in range(num - 1, -1, -1):
+            arr_270[j].append(arr_180[k][j])
+
+    print('#{0}'.format(i+1))
+    for h in range(num):
+        tmp = []
+        tmp.append(''.join(arr_90[h]))
+        tmp.append(''.join(arr_180[h]))
+        tmp.append(''.join(arr_270[h]))
+        print(' '.join(tmp))
+
+
+
