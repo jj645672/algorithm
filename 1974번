@@ -1,0 +1,41 @@
+# no.1974
+# difficulty 2
+
+def row_check(arr):
+    for i in arr:
+        if sum(i) != 45:
+            return False
+    return True
+
+def col_check(arr):
+    for i in range(9):
+        sum_check = 0
+        for j in range(9):
+            sum_check += arr[j][i]
+        if sum_check != 45:
+            return False
+    return True
+
+def block_check(arr):
+    start = [[0, 0], [0, 3], [0, 6], [3, 0], [3, 3], [3, 6], [6, 0], [6, 3], [6, 6]]
+    for l in start:
+        sum_check = 0
+        for h in range(3):
+            for g in range(3):
+                x = l[0] + h
+                y = l[1] + g
+                sum_check += arr[x][y]
+        if sum_check != 45:
+            return False
+    return True
+
+
+testcase = int(input())
+for i in range(testcase):
+    arr = [list(map(int, input().split())) for _ in range(9)]
+
+    res = [row_check(arr), col_check(arr), block_check(arr)]
+    if False in res:
+        print('#{0} 0'.format(i+1))
+    else:
+        print('#{0} 1'.format(i+1))
