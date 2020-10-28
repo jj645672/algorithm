@@ -1,0 +1,15 @@
+# no.1926
+# difficulty 2
+
+clap = ['3', '6', '9']
+
+num = int(input())
+for i in range(1, num+1):
+    res = []
+    for j in str(i):
+        if j in clap:
+            res.append(j)
+    if len(res) == 0:
+        print(i, end=' ')
+    else:
+        print('-'*len(res), end=' ')
