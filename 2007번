@@ -1,0 +1,16 @@
+# no.2007
+# difficulty 2
+
+testcase = int(input())
+for i in range(testcase):
+    string = input()
+    word = ''
+    word_index = 1
+
+    while (word_index != 30):
+        word = string[:word_index]
+        check = string[word_index:word_index*2]
+        word_index += 1
+        if word == check:
+            break
+    print('#{0} {1}'.format(i+1, len(word)))
