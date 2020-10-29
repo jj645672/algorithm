@@ -1,0 +1,16 @@
+# no.1204
+# difficulty 2
+
+testcase = int(input())
+for i in range(testcase):
+    seq = int(input())
+    score = input()
+    score_count = {}
+    for j in score.split():
+        if j not in score_count:
+            score_count[j] = 1
+        else:
+            score_count[j] += 1
+
+    score_count = sorted(score_count.items(), key=lambda x:x[1], reverse=True)
+    print('#{0} {1}'.format(i+1, int(score_count[0][0])))
