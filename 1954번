@@ -1,0 +1,31 @@
+# no.1954
+# difficulty 2
+
+testcase = int(input())
+for i in range(testcase):
+    num = int(input())
+    arr = [[0]*num for _ in range(num)]
+
+    direction = [(0,1), (1,0), (0,-1), (-1,0)]
+    count = 0
+    index = 0
+    x, y = 0, -1
+
+    while (count < num*num):
+        tmp_x = x + direction[index][0]
+        tmp_y = y + direction[index][1]
+
+        if tmp_x < 0 or tmp_y < 0 or tmp_x >= num or tmp_y >= num or arr[tmp_x][tmp_y] != 0:
+            index += 1
+            if index == 4:
+                index = 0
+        else:
+            count += 1
+            x, y = tmp_x, tmp_y
+            arr[x][y] = count
+
+    print('#{0}'.format(i+1))
+    for j in arr:
+        for k in j:
+            print(k, end=' ')
+        print()
