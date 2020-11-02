@@ -1,0 +1,35 @@
+# no.2630
+# level - Silver 3
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+blue, white = 0, 0
+
+def quad_tree(n, x, y):
+    global blue
+    global white
+    color = arr[x][y]
+    for i in range(x, x+n):
+        for j in range(y, y+n):
+            if arr[i][j] != color:
+                color = -1
+                break
+        if color == -1:
+            break
+
+    if color == 0:
+        white += 1
+    elif color == 1:
+        blue += 1
+    elif color == -1:
+        quad_tree(n//2, x, y) #2사분면
+        quad_tree(n//2, x, y+n//2) #1사분면
+        quad_tree(n//2, x+n//2, y) #3사분면
+        quad_tree(n//2, x+n//2, y+n//2) #4사분면
+
+quad_tree(n, 0, 0)
+print(white)
+print(blue)
