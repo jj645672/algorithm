@@ -1,0 +1,31 @@
+# no.1021
+# lever - Silver 4
+
+import sys
+from collections import deque
+
+
+n, m = map(int, input().split())
+idx = list(map(int, input().split()))
+dq = deque(range(1, n+1))
+count = 0
+
+for i in idx:
+    if dq[0] == i:
+        dq.popleft()
+        continue
+
+    index = dq.index(i)
+
+    if index <= (len(dq)//2):
+        dq.rotate(-index)
+        count += index
+    elif index > (len(dq)//2):
+        dq.rotate(len(dq)-index)
+        count += (len(dq)-index)
+    dq.popleft()
+
+print(count)
+
+
+# 출저 https://inspirit941.tistory.com/entry/Python-%EB%B0%B1%EC%A4%80-1021-%ED%9A%8C%EC%A0%84%ED%95%98%EB%8A%94-%ED%81%90
