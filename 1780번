@@ -1,0 +1,39 @@
+# no.1780
+# lever - Silver 2
+
+def nine_tree(n, x, y):
+    global zero
+    global one
+    global m_one
+    global arr
+    check = arr[x][y]
+    for i in range(x, x+n):
+        for j in range(y, y+n):
+            if arr[i][j] != check:
+                next_n = n//3
+                nine_tree(next_n, x, y) #1
+                nine_tree(next_n, x, y+next_n) #2
+                nine_tree(next_n, x, y+next_n*2) #3
+                nine_tree(next_n, x+next_n, y) #4
+                nine_tree(next_n, x+next_n, y+next_n) #5
+                nine_tree(next_n, x+next_n, y++next_n*2) #6
+                nine_tree(next_n, x+next_n*2, y) #7
+                nine_tree(next_n, x+next_n*2, y+next_n) #8
+                nine_tree(next_n, x+next_n*2, y+next_n*2) #9
+                return
+    if check == 1:
+        one += 1
+    elif check == 0:
+        zero += 1
+    elif check == -1:
+        m_one += 1
+
+
+
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+zero, one, m_one = 0, 0, 0
+nine_tree(n, 0, 0)
+print(m_one)
+print(zero)
+print(one)
