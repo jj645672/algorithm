@@ -1,0 +1,18 @@
+# no.1629
+# level - Silver 1
+
+def power(x, y):
+    if y == 1:
+        return x % c
+    else:
+        tmp = power(x, y//2)
+        if y % 2 == 0:
+            return tmp * tmp % c
+        else:
+            return tmp * tmp * x % c
+
+a, b, c = map(int, input().split())
+res = power(a, b)
+print(res)
+
+# 출저 https://jjangsungwon.tistory.com/10
