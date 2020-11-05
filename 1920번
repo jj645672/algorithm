@@ -1,0 +1,27 @@
+# no.1920
+# lever - Silver 4
+
+def BS(arr, target):
+    start = 0
+    end = len(arr)-1
+
+    while start <= end:
+        idx = (start+end) // 2
+        if arr[idx] == target:
+            return 1
+        elif arr[idx] > target:
+            end = idx - 1
+        elif arr[idx] < target:
+            start = idx + 1
+    return 0
+
+
+n = int(input())
+arr1 = list(map(int, input().split()))
+arr1.sort() # 1 2 3 4 5
+
+m = int(input())
+arr2 = list(map(int, input().split()))
+
+for i in arr2:
+    print(BS(arr1, i))
