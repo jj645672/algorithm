@@ -1,0 +1,25 @@
+# no.1654
+# lever - Silver 3
+
+import sys
+input = sys.stdin.readline
+
+k, n = map(int, input().split())
+arr = [int(input()) for _ in range(k)]
+arr.sort()
+
+start = 1
+end = arr[-1]
+
+while start <= end:
+    mid = (start + end) // 2
+    count = 0
+    for i in arr:
+        count += (i // mid)
+
+    if count >= n:
+        start = mid + 1
+    elif count < n:
+        end = mid - 1
+
+print(end)
