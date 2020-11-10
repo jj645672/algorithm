@@ -1,0 +1,16 @@
+# no.1213
+# difficulty 3
+
+for _ in range(10):
+    n = int(input())
+    word = input()
+    string = input()
+
+    count = 0
+    word_len = len(word)
+    string_len = len(string)
+
+    for i in range(string_len-word_len+1):
+        if string[i:i+word_len] == word:
+            count += 1
+    print('#{0} {1}'.format(n, count))
