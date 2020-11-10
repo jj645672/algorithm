@@ -1,0 +1,33 @@
+# no.1215
+# difficulty 3
+
+def palindrome(arr, n):
+    count = 0
+    for i in arr:
+        for j in range(8-n+1):
+            temp = i[j:j + n]
+            tmp = ''.join(temp)
+            temp.reverse()
+            check = ''.join(temp)
+            if tmp == check:
+                count += 1
+    return count
+
+
+
+for q in range(10):
+    n = int(input())
+    arr = [list(input()) for _ in range(8)]
+
+    count = 0
+    count += palindrome(arr, n) #가로 방향 회문 찾기
+
+    col_arr = []
+    for i in range(8):
+        tmp_arr = []
+        for j in range(8):
+            tmp_arr.append(arr[j][i])
+        col_arr.append(tmp_arr)
+    count += palindrome(col_arr, n) #세로 방향 회문 찾기
+    
+    print('#{0} {1}'.format(q, count))
