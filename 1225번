@@ -1,0 +1,21 @@
+# no.1225
+# difficulty 3
+
+for _ in range(10):
+    n = int(input())
+    arr = list(map(int, input().split()))
+
+    idx = 1
+    while True:
+        if idx == 6:
+            idx = 1
+
+        tmp = arr.pop(0) - idx
+        if tmp <= 0:
+            arr.append(0)
+            break
+        arr.append(tmp)
+        idx += 1
+
+    print('#{}'.format(n), end=' ')
+    print(*arr)
