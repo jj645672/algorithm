@@ -1,0 +1,21 @@
+# no.1221
+# difficulty 3
+
+alpha_to_digit = {'ZRO':0, 'ONE':1, 'TWO':2, 'THR':3, 'FOR':4, 'FIV':5, 'SIX':6, 'SVN':7, 'EGT':8, 'NIN':9}
+digit_to_alpha = {0:'ZRO', 1:'ONE', 2:'TWO', 3:'THR', 4:'FOR', 5:'FIV', 6:'SIX', 7:'SVN', 8:'EGT', 9:'NIN'}
+
+testcase = int(input())
+for _ in range(testcase):
+    tmp = input().split()
+    n = int(tmp[0].strip('#'))
+    size = int(tmp[1])
+    arr = input().split()
+
+    res = []
+    for i in arr:
+        res.append(alpha_to_digit[i])
+    res.sort()
+
+    print('#{0}'.format(q+1))
+    for j in res:
+        print(digit_to_alpha[j], end=' ')
