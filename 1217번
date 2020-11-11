@@ -1,0 +1,21 @@
+# no.1217
+# difficulty 3
+
+def recur(n, m):
+    if m == 2:
+        return n*n
+    elif m != 2 and m % 2 == 0:
+        return recur(n, m//2) ** 2
+    elif m != 2 and m % 2 == 1:
+        return recur(n, m-1)*n
+
+
+for q in range(10):
+    i = int(input())
+    n, m = map(int, input().split())
+    res = 0
+    if m % 2 == 1:
+        res = recur(n, m-1) * n
+    else:
+        res = recur(n, m)
+    print('#{0} {1}'.format(i, res))
