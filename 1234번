@@ -1,0 +1,16 @@
+# no.1234
+# difficulty 3
+
+for q in range(10):
+    size, code = input().split()
+
+    idx = 0
+    while idx <= int(size)-2:
+        if code[idx] == code[idx+1]:
+            code = code[:idx] + code[idx+2:]
+            idx -= 1
+            size = len(code)
+        else:
+            idx += 1
+
+    print('#{0} {1}'.format(q+1, int(code)))
