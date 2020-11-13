@@ -1,0 +1,19 @@
+# no.1228
+# difficulty 3
+
+for q in range(10):
+    n = int(input())  # 원본 암호문의 길이
+    row_code = list(map(int, input().split()))
+    order_cnt = int(input())   # 명령어의 개수
+    order = input().split('I ')
+    order.pop(0)
+
+    for i in order:
+        tmp = list(map(int, i.split()))
+        temp = tmp[2:]
+        idx = tmp[0]
+        for j in range(tmp[1]):
+            row_code.insert(idx+j, temp[j])
+
+    print('#{0}'.format(q+1), end=' ')
+    print(* row_code[:10])
