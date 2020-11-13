@@ -1,0 +1,30 @@
+# no.1230
+# difficulty 3
+
+for q in range(10):
+    n = int(input())  # 원본 암호문의 길이
+    row_code = list(map(int, input().split()))
+    order_cnt = int(input())   # 명령어의 개수
+    order = input().split()
+
+    while order:
+        od = order.pop(0)
+        if od == 'I':
+            index = int(order.pop(0))
+            size = int(order.pop(0))
+            tmp = order[:size]
+            for i in range(size):
+                row_code.insert(index+i, int(tmp[i]))
+            del order[:size]
+        elif od == 'D':
+            index = int(order.pop(0))
+            size = int(order.pop(0))
+            del row_code[index:index+size]
+        elif od == 'A':
+            size = int(order.pop(0))
+            tmp = order[:size]
+            for j in tmp:
+                row_code.append(int(j))
+            del order[:size]
+    print('#{0}'.format(q+1), end=' ')
+    print(* row_code[:10])
