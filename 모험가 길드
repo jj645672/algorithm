@@ -1,0 +1,17 @@
+#이것이_코딩_테스트다
+#Q.모험가_길드
+
+n = int(input())
+fear_list = list(map(int, input().split()))
+fear_list.sort()
+
+group_count = 0
+member_count = 0
+
+for i in fear_list:
+    member_count += 1
+    if member_count >= i:
+        group_count += 1
+        member_count = 0
+
+print(group_count)
