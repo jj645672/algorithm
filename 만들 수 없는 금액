@@ -1,0 +1,16 @@
+#이것이_코딩_테스트다
+#Q.만들_수_없는_금액
+
+#답안
+n = int(input())
+data = list(map(int, input().split()))
+data.sort()
+
+
+target = 1
+for x in data:
+    if target < x:
+        break
+    target += x
+
+print(target)
