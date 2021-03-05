@@ -1,0 +1,19 @@
+#이것이_코딩_테스트다
+#Q.럭키_스트레이트
+
+n = int(input())
+
+size = len(str(n))
+
+left = 0
+for i in range(size//2):
+    left += int(str(n)[i])
+
+right = 0
+for j in range(size//2, size):
+    right += int(str(n)[j])
+
+if left == right:
+    print('LUCKY')
+else:
+    print('READY')
