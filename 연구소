@@ -1,0 +1,58 @@
+#이것이_코딩_테스트다
+#연구소
+
+#정답
+n, m = map(int, input().split())
+
+graph = []
+for _ in range(n):
+    graph.append(list(map(int, input().split())))
+
+temp = [[0]*m for _ in range(n)] #3개의 벽을 설치한 뒤의 임시 데이터 저장
+
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+res = 0
+
+def virus(x, y): #바이러스 퍼트리는 함수
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if nx >= 0 and nx < n and ny >= 0 and ny < m:
+            if temp[nx][ny] == 0:
+                temp[nx][ny] = 2
+                virus(nx, ny)
+
+def get_score(): #안전 영역인 0의 수 카운트
+    score = 0
+    for i in range(n):
+        for j in range(m):
+            if temp[i][j] == 0:
+                score += 1
+    return score
+
+def dfs(count):
+    global res
+    if count == 3:
+        for i in range(n):
+            for j in range(m):
+                temp[i][j] = graph[i][j] #임시 데이터 저장
+        for i in range(n):
+            for j in range(m):
+                if temp[i][j] == 2: #벽 3개 다 세웠으니 바이러스 전파
+                    virus(i, j)
+        res = max(res, get_score()) #최대값 저장
+        return
+
+    #벽 3개를 순차적으로 설치 - 모든 경우의 수 실시
+    for i in range(n):
+        for j in range(m):
+            if graph[i][j] == 0:
+                graph[i][j] = 1
+                count += 1
+                dfs(count)
+                graph[i][j] = 0 #벽을 세운 뒤 다시 초기화
+                count -= 1 #dfs함수 빠져나올때마다 디카운트
+
+dfs(0)
+print(res)
