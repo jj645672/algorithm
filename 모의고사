@@ -1,0 +1,37 @@
+#프로그래머스 level1
+#모의고사
+
+
+def ans_count(data, ans):
+    problem_inx = 0
+    student_inx = 0
+    ans_count = 0
+    
+    while problem_inx < len(ans):
+        if student_inx == len(data):
+            student_inx = 0
+
+        if ans[problem_inx] == data[student_inx]:
+            ans_count += 1
+        problem_inx += 1
+        student_inx += 1
+        
+    return ans_count
+
+def solution(answers):
+    answer = []
+
+    student_hash = {1:[1,2,3,4,5], 2:[2,1,2,3,2,4,2,5], 3:[3,3,1,1,2,2,4,4,5,5]}
+    tmp = dict()
+    
+    for stu_num, ans in student_hash.items():
+        tmp[stu_num] = ans_count(ans, answers)
+        
+    ans_max = max(tmp.values())
+    for k,v in tmp.items():
+        if v >= ans_max:
+            answer.append(k)
+    
+    answer.sort()
+    
+    return answer
