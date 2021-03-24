@@ -1,0 +1,15 @@
+#프로그래머스 level1
+#실패율
+
+def solution(N, stages):
+    fail = {}
+    denominator = len(stages)
+    for i in range(1, N+1):
+        if denominator == 0:
+            fail[i] = 0
+            continue
+        numerator = stages.count(i)
+        fail[i] = numerator / denominator
+        denominator -= numerator
+
+    return sorted(fail, key=lambda x: fail[x], reverse=True)
