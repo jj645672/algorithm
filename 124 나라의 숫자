@@ -1,0 +1,13 @@
+#프로그래머스
+#lever 2
+
+#정답 참고
+def solution(n):
+    answer = ''
+    while n > 0:
+        n, reminder = divmod(n, 3)
+        answer = '412'[reminder]+answer
+        if reminder == 0:
+            n -= 1
+    
+    return answer
